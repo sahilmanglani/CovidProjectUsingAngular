@@ -1,0 +1,57 @@
+<div class="position-absolute top-50 start-50 translate-middle">
+  <div class="p-1" *ngIf="WholeData; else Init">
+    <div class="input-group input-group-lg">
+      <span class="input-group-text" id="inputGroup-sizing-lg">Country</span>
+      <input
+        type="text"
+        #input
+        class="form-control"
+        placeholder="Search Country"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-lg"
+        (change)="handleChange(input.value)"
+      />
+    </div>
+
+    <hr />
+
+    <div class="card text-center text-white bg-dark" *ngIf="CountryData">
+      <h1 class="card-header">{{ CountryData.Country_Region }}</h1>
+      <hr />
+      <div class="card-body">
+        <h5 class="card-title">Longitude and Lattitude</h5>
+        <h6 class="card-title">Lattitude : {{ CountryData.Lat }}</h6>
+        <h6 class="card-title">Longitude : {{ CountryData.Long_ }}</h6>
+        <h6 class="card-title">
+          Confirmed Cases : {{ CountryData.Confirmed }}
+        </h6>
+        <h6 class="card-title">Deaths Cases : {{ CountryData.Deaths }}</h6>
+      </div>
+      <div class="card-footer text-muted">
+        Last Updated {{ CountryData.Last_Update }}
+      </div>
+    </div>
+    <div class="card text-center text-white bg-dark p-1" *ngIf="!CountryData">
+      <h4>No Country Exists or Nothing Found</h4>
+    </div>
+  </div>
+</div>
+
+<ng-template #Init>
+  <div class="spinner-border text-dark p-1" role="status"></div>
+</ng-template>
+
+<!-- Active: ""
+Admin2: ""
+Case_Fatality_Ratio: "1.0506935847379615"
+Combined_Key: "West Bengal, India"
+Confirmed: "2016192"
+Country_Region: "India"
+Deaths: "21184"
+FIPS: ""
+Incident_Rate: "2024.1000983612946"
+Last_Update: "2022-03-11 04:20:50"
+Lat: "23.814082"
+Long_: "87.979803"
+Province_State: "West Bengal"
+Recovered: "" -->
